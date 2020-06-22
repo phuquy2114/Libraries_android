@@ -1,0 +1,3 @@
+include ':baseProject'
+rootProject.name='Libraires_android'
+include ':app'
