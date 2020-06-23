@@ -8,10 +8,10 @@ import android.content.SharedPreferences
  * Created by PhuQuy on 3/25/19.
  */
 object SessionInfoManager {
-    private lateinit var sharedPref: SharedPreferences
 
-    private val KEY_SAVE_PHONE = "key_save_phone"
-    private val KEY_SAVE_USERNAME = "key_save_user_name"
+    val KEY_SAVE_TOKENT = "key_key_token"
+
+    private lateinit var sharedPref: SharedPreferences
 
     fun init(context: Context, sharedPref: SharedPreferences) {
         this.sharedPref = sharedPref
@@ -28,22 +28,13 @@ object SessionInfoManager {
     }
 
     /**
-     * Set key save phone
+     * Set key save token
      *
      * @param token
      */
-    var keySavePhone: String
-        get() = sharedPref.getString(KEY_SAVE_PHONE, "")!!
-        set(token) = sharedPref.edit().putString(KEY_SAVE_PHONE, token).apply()
-
-    /**
-     * Set key save user name
-     *
-     * @param token
-     */
-    var keySaveUserName: String
-        get() = sharedPref.getString(KEY_SAVE_USERNAME, "")!!
-        set(token) = sharedPref.edit().putString(KEY_SAVE_USERNAME, token).apply()
+    var keySaveToken: String
+        get() = sharedPref.getString(KEY_SAVE_TOKENT, "")!!
+        set(token) = sharedPref.edit().putString(KEY_SAVE_TOKENT, token).apply()
 
     /**
      * clear share
