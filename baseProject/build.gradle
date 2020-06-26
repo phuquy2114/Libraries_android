@@ -27,13 +27,20 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    // rx java
+    implementation 'com.github.raviteja06:RxPermissions:1.2.0'
+
     //sdp
-    implementation 'com.intuit.sdp:sdp-android:1.0.5'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'

@@ -7,6 +7,11 @@ import android.os.Build;
 
 import androidx.core.app.ActivityCompat;
 
+import com.apt7.rxpermissions.Permission;
+import com.apt7.rxpermissions.PermissionObservable;
+
+import io.reactivex.observers.DisposableObserver;
+
 
 public class PermissionUtil {
     private static final String[] mArrayPermissionsPhoto = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -93,7 +98,26 @@ public class PermissionUtil {
      * @param callback
      */
     public static void checkPermission(final Context context, final String permission, final PermissionCallback callback) {
+        PermissionObservable.getInstance().request(context, permission).subscribe(new DisposableObserver<Permission>() {
+            @Override
+            public void onNext(Permission value) {
 
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                callback.onPermissionError();
+            }
+
+            @Override
+            public void onComplete() {
+                if (hasPermissions(context, permission)) {
+                    callback.onPermissionComplete();
+                } else {
+                    callback.onPermissionError();
+                }
+            }
+        });
     }
 
     /**
@@ -104,7 +128,22 @@ public class PermissionUtil {
      * @param permission
      */
     public static void checkPermission(Context context, final MultiPermissionCallback callback, String... permission) {
+        PermissionObservable.getInstance().request(context, permission).subscribe(new DisposableObserver<Permission>() {
+            @Override
+            public void onNext(Permission value) {
+                callback.onPermissionNext(value.getName(), value.getGranted() == 0 ? false : true);
+            }
 
+            @Override
+            public void onError(Throwable e) {
+                callback.onPermissionError();
+            }
+
+            @Override
+            public void onComplete() {
+                callback.onPermissionComplete();
+            }
+        });
     }
 
     /**
