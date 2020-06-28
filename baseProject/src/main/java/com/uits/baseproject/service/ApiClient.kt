@@ -67,6 +67,7 @@ abstract class ApiClient {
     companion object {
         private val TAG = ApiClient::class.java.simpleName
         private const val TIME_OUT: Long = 300000
+        public var LoggingInterceptor = true
         private const val AUTHORIZATION = "x-access-token"
         private const val AUTHORIZATION_TYPE = "Bearer "
 
@@ -79,7 +80,7 @@ abstract class ApiClient {
 
         // Log
         // AUTHORIZATION
-                OkHttpClient.Builder
+           OkHttpClient.Builder
             get() = try {
                 // Create a trust manager that does not validate certificate chains
                 val trustAllCerts = arrayOf<TrustManager>(
@@ -110,7 +111,7 @@ abstract class ApiClient {
                 builder.interceptors().add(ForbiddenInterceptor())
 
                 // Log
-                if (true) {
+                if (LoggingInterceptor) {
                     val logInterceptor = HttpLoggingInterceptor()
                     logInterceptor.level = HttpLoggingInterceptor.Level.BODY
                     builder.interceptors().add(logInterceptor)
