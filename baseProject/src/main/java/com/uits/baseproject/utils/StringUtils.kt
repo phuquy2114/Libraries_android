@@ -1,4 +1,4 @@
-package com.primarynet.metro.utils
+package com.uits.baseproject.utils
 
 import android.graphics.Typeface
 import android.text.Spannable

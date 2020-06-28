@@ -1,4 +1,4 @@
-package com.primarynet.metro.service.core
+package com.uits.baseproject.service.core
 
 import android.content.Context
 import lombok.Builder

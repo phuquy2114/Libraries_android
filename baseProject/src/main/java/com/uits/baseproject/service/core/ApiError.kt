@@ -1,6 +1,4 @@
-package com.primarynet.metro.service.core
-
-import com.google.gson.annotations.SerializedName
+package com.uits.baseproject.service.core
 
 /**
  * Api error

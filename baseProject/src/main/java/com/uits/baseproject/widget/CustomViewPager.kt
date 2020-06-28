@@ -1,4 +1,4 @@
-package com.primarynet.metro.widget
+package com.uits.baseproject.widget
 
 import android.content.Context
 import android.util.AttributeSet
