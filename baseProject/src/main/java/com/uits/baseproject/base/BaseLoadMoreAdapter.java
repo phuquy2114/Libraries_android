@@ -238,7 +238,12 @@ public abstract class BaseLoadMoreAdapter<DATA> extends BaseAdapter {
      */
     private final void startLoadMore() {
         mDataList.add(null);
-        mRecyclerView.post(() -> notifyItemInserted(mDataList.size() - 1));
+        mRecyclerView.post(new Runnable() {
+            @Override
+            public void run() {
+                notifyItemInserted(mDataList.size() - 1);
+            }
+        });
     }
 
     /**

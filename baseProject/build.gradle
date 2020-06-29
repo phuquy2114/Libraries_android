@@ -22,10 +22,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 repositories {
     maven { url "https://jitpack.io" }
@@ -35,9 +31,6 @@ repositories {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
-    // rx java
-    implementation 'com.github.raviteja06:RxPermissions:1.2.0'
 
     //sdp
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
