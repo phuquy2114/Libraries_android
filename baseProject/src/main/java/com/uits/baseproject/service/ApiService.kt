@@ -9,13 +9,38 @@ import retrofit2.http.*
 /**
  * Copyright © 2018 SOFT ONE  CO., LTD
  * Created by PhuQuy on 3/21/19.
+ *
+ * Collects all subscriptions to unsubscribe later
+    @NonNull
+    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
+
+    mCompositeDisposable.add(service)
+    .subscribeOn(Schedulers.io()) // “work” on io thread
+    .observeOn(AndroidSchedulers.mainThread()) // “listen” on UIThread
+    .map(new Function<CityResponse, List<Geoname>>() {
+    @Override
+    public List<BaseResponse> apply(
+    @io.reactivex.annotations.NonNull final CityResponse  cityResponse) throws Exception {
+    // we want to have the geonames and not the wrapper object
+    return BaseResponse;
+    }
+    })
+    .subscribe(new Consumer<List<BaseResponse>>() {
+    @Override
+    public void accept(
+    @io.reactivex.annotations.NonNull final List<BaseResponse> geonames)
+    throws Exception {
+    display()
+    }
+    })
+    );
  */
 interface ApiService {
     /**
      * function GET
      */
     @GET("/get")
-    fun getData(@Query("key") value : String) : Single<BaseResponse>
+    fun getData(@Query("key") value: String): Single<BaseResponse>
 
     /**
      * func POST
