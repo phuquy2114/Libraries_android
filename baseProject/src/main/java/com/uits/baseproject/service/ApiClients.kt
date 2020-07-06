@@ -26,21 +26,14 @@ import javax.net.ssl.X509TrustManager
  *
  * @author QuyDP
  */
-abstract class ApiClient {
-
-    /**
-     * constructor
-     */
-    constructor()
-
+abstract class ApiClients<T>(var data : T) {
 
     companion object {
-        private val TAG = ApiClient::class.java.simpleName
+        private val TAG = ApiClients::class.java.simpleName
         private const val TIME_OUT: Long = 300000
         public var LoggingInterceptor = true
         private const val AUTHORIZATION = "x-access-token"
         private const val AUTHORIZATION_TYPE = "Bearer "
-        lateinit var mApiService: ApiService
 
         // Create a trust manager that does not validate certificate chains
         val unsafeOkHttpClient:
@@ -135,8 +128,9 @@ abstract class ApiClient {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
-        mApiService = retrofit.create(ApiService::class.java)
+       // data = retrofit.create<T>()
         return retrofit
     }
-
 }
+
+

@@ -7,8 +7,8 @@ import android.os.Build;
 
 import androidx.core.app.ActivityCompat;
 
-import com.apt7.rxpermissions.Permission;
-import com.apt7.rxpermissions.PermissionObservable;
+import com.uits.baseproject.utils.rxpermission.Permission;
+import com.uits.baseproject.utils.rxpermission.PermissionObservable;
 
 import io.reactivex.observers.DisposableObserver;
 

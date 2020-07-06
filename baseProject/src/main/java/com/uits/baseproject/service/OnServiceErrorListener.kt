@@ -1,6 +1,6 @@
 package com.uits.baseproject.service
 
-import com.primarynet.metro.service.core.ApiError
+import com.uits.baseproject.service.core.ApiError
 
 /**
  * Copyright © 2017 BAP CO., LTD
