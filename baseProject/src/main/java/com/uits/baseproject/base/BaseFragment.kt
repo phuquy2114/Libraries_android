@@ -75,9 +75,8 @@ abstract class BaseFragment : Fragment() {
         onEvent()
     }
 
-    open fun onViewCreated(view: View) {
-    }
-
+    abstract fun onViewCreated(view: View)
+    
     open fun onInit() {}
 
     open fun onEvent() {}

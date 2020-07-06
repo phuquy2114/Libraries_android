@@ -21,23 +21,17 @@ abstract class BaseActivity : AppCompatActivity() {
     public val TAG = BaseActivity::class.java.getSimpleName()
     private var mLoading: ProgressLoading = ProgressLoading()
     private var mPFLoading: PFLoadingDialog? = null
-    abstract fun getLayoutId(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
         mPFLoading = PFLoadingDialog(this)
-        onCreate()
-    }
-
-    open fun onCreate() {
         onInit()
         onEvent()
     }
 
-    open fun onInit() {}
+    abstract fun onInit();
 
-    open fun onEvent() {}
+    abstract fun onEvent();
 
     open fun getLoading(): ProgressLoading = mLoading
 
