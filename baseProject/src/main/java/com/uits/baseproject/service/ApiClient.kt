@@ -33,7 +33,6 @@ abstract class ApiClient {
      */
     constructor()
 
-
     companion object {
         private val TAG = ApiClient::class.java.simpleName
         private const val TIME_OUT: Long = 300000
