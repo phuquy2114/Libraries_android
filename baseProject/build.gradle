@@ -37,19 +37,19 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
     //RxJava and Rx android
-    implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
-    implementation "io.reactivex.rxjava2:rxjava:2.2.9"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.18"
 
     // retrofit
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
     // JSON Converter
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
     // okhttp 3
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.10.0'
 
     //ShortcutBadger
