@@ -26,7 +26,7 @@ import javax.net.ssl.X509TrustManager
  *
  * @author QuyDP
  */
-abstract class ApiClients<T>(var data: T) {
+abstract class ApiClients() {
 
     companion object {
         private val TAG = ApiClients::class.java.simpleName
@@ -130,7 +130,7 @@ abstract class ApiClients<T>(var data: T) {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build()
 
-          
+
         }
 
         fun <S> createService(serviceClass: Class<S>?): S {
