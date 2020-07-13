@@ -24,10 +24,13 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(getLayoutId())
         mPFLoading = PFLoadingDialog(this)
         onInit()
         onEvent()
     }
+
+    abstract fun getLayoutId(): Int
 
     abstract fun onInit();
 
