@@ -2,14 +2,18 @@
 
 ### Download
 
+
+Gradle:
+
+```gradle
 allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
+  ```
   
-Gradle:
 ```gradle
 dependencies {
 	 implementation 'com.github.phuquy2114:Libraries_android:1.0.9'
