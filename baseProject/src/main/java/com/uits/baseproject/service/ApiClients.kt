@@ -26,7 +26,7 @@ import javax.net.ssl.X509TrustManager
  *
  * @author QuyDP
  */
-abstract class ApiClients<T>(var data : T) {
+abstract class ApiClients() {
 
     companion object {
         private val TAG = ApiClients::class.java.simpleName
@@ -34,6 +34,7 @@ abstract class ApiClients<T>(var data : T) {
         public var LoggingInterceptor = true
         private const val AUTHORIZATION = "x-access-token"
         private const val AUTHORIZATION_TYPE = "Bearer "
+        private lateinit var mRetrofit : Retrofit
 
         // Create a trust manager that does not validate certificate chains
         val unsafeOkHttpClient:
@@ -96,40 +97,45 @@ abstract class ApiClients<T>(var data : T) {
             } catch (e: Exception) {
                 throw RuntimeException(e)
             }
-    }
 
-    /**
-     * init confirm url
-     *
-     * @param url
-     */
-    fun init(url: String): Retrofit {
-        // Author
-        val auth = ""
-        Log.d(TAG, "init: $auth")
-        // init
-        val booleanAdapter = BooleanAdapter()
-        val integerAdapter = IntegerAdapter()
-        val doubleAdapter = DoubleAdapter()
-        // init Gson
-        val gson = GsonBuilder()
-                .registerTypeAdapter(Boolean::class.java, booleanAdapter)
-                .registerTypeAdapter(Boolean::class.javaPrimitiveType, booleanAdapter)
-                .registerTypeAdapter(Int::class.java, integerAdapter)
-                .registerTypeAdapter(Int::class.javaPrimitiveType, integerAdapter)
-                .registerTypeAdapter(Double::class.java, doubleAdapter)
-                .registerTypeAdapter(Double::class.javaPrimitiveType, doubleAdapter)
-                .disableHtmlEscaping()
-                .create()
 
-        val retrofit = Retrofit.Builder()
-                .baseUrl(url) // .client(okHttpBuilder.build())
-                .client(unsafeOkHttpClient.build())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build()
-       // data = retrofit.create<T>()
-        return retrofit
+        /**
+         * init confirm url
+         *
+         * @param url
+         */
+       fun init(url: String) {
+            // Author
+            val auth = ""
+            Log.d(TAG, "init: $auth")
+            // init
+            val booleanAdapter = BooleanAdapter()
+            val integerAdapter = IntegerAdapter()
+            val doubleAdapter = DoubleAdapter()
+            // init Gson
+            val gson = GsonBuilder()
+                    .registerTypeAdapter(Boolean::class.java, booleanAdapter)
+                    .registerTypeAdapter(Boolean::class.javaPrimitiveType, booleanAdapter)
+                    .registerTypeAdapter(Int::class.java, integerAdapter)
+                    .registerTypeAdapter(Int::class.javaPrimitiveType, integerAdapter)
+                    .registerTypeAdapter(Double::class.java, doubleAdapter)
+                    .registerTypeAdapter(Double::class.javaPrimitiveType, doubleAdapter)
+                    .disableHtmlEscaping()
+                    .create()
+
+            mRetrofit = Retrofit.Builder()
+                    .baseUrl(url) // .client(okHttpBuilder.build())
+                    .client(unsafeOkHttpClient.build())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .build()
+
+
+        }
+
+        fun <S> createService(serviceClass: Class<S>?): S {
+            return mRetrofit.create(serviceClass)
+        }
     }
 }
 
