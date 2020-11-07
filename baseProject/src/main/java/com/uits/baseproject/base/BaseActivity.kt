@@ -5,7 +5,10 @@ import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.uits.baseproject.R
 import com.uits.baseproject.widget.PFLoadingDialog
 import com.uits.baseproject.widget.ProgressLoading
 
@@ -39,9 +42,9 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected fun showAlertDialog(msg: String) {
         AlertDialog.Builder(this)
-            .setMessage(msg)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
+                .setMessage(msg)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
     }
 
     protected fun showAlertDialog(@StringRes resId: Int) {
@@ -53,14 +56,14 @@ abstract class BaseActivity : AppCompatActivity() {
      */
     protected fun showMessageOptionDialog(message: String, listener: DialogInterface.OnClickListener?) {
         AlertDialog.Builder(this)
-            .setMessage(message)
-            .setCancelable(false)
-            .setPositiveButton(android.R.string.yes) { dialog, id ->
-                listener?.onClick(dialog, id)
-            }
-            .setNegativeButton(
-                android.R.string.no
-            ) { dialog, id -> dialog.cancel() }.show()
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton(android.R.string.yes) { dialog, id ->
+                    listener?.onClick(dialog, id)
+                }
+                .setNegativeButton(
+                        android.R.string.no
+                ) { dialog, id -> dialog.cancel() }.show()
     }
 
     fun showMessage(title: String?, message: String) {
@@ -73,6 +76,50 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     /**
+     * Open new fragment
+     */
+    public open fun replaceFragment(fragment: Fragment) {
+        val fragmentTransactionAccount: FragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransactionAccount.replace(R.id.mFrameContainer, fragment)
+        fragmentTransactionAccount.commit()
+    }
+
+    /**
+     * check current fragment id
+     *
+     * @return
+     */
+    open fun getCurrentFragment(): BaseFragment? {
+        return supportFragmentManager.findFragmentById(R.id.mFrameContainer) as BaseFragment?
+    }
+
+    /**
+     *  if (!popFragment(getSupportFragmentManager()))
+     */
+    open fun popFragment(fm: FragmentManager?): Boolean {
+        if (fm != null) {
+            if (fm.getBackStackEntryCount() > 0) {
+                fm.popBackStack()
+                return true
+            }
+            val fragList: List<Fragment> = fm.getFragments()
+            if (fragList != null && fragList.size > 0) {
+                for (frag in fragList) {
+                    if (frag == null) {
+                        continue
+                    }
+                    if (frag.isVisible()) {
+                        if (popFragment(frag.getChildFragmentManager())) {
+                            return true
+                        }
+                    }
+                }
+            }
+        }
+        return false
+    }
+
+    /**
      * show message and title
      *
      * @param title
@@ -81,12 +128,12 @@ abstract class BaseActivity : AppCompatActivity() {
     fun showDialogMessage(title: String, message: String) {
         if (!isFinishing) {
             AlertDialog.Builder(this)
-                .setTitle(title)
-                .setMessage(message)
-                .setCancelable(false)
-                .setPositiveButton(
-                    android.R.string.ok
-                ) { dialog, which -> dialog.cancel() }.show()
+                    .setTitle(title)
+                    .setMessage(message)
+                    .setCancelable(false)
+                    .setPositiveButton(
+                            android.R.string.ok
+                    ) { dialog, which -> dialog.cancel() }.show()
         }
     }
 }
