@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
-import vn.uits.ytsk.R;
+import com.uits.baseproject.R;
 
 /**
  * @author PhuQuy
