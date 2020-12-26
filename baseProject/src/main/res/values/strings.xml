@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Time newfeed -->
+    <!--================================================================================================-->
+    <string name="text_date_time_just_now">Bây giờ</string>
+    <string name="text_today">Hôm nay </string>
+    <string name="text_yesterday">Ngày hôm qua </string>
+
+</resources>

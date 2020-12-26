@@ -3,13 +3,17 @@ package com.uits.baseproject.utils;
 import android.content.Context;
 import android.util.Log;
 
+import java.lang.Thread.UncaughtExceptionHandler;
+
 /**
- * Copyright © 2018 SOFT ONE  CO., LTD
- * Created by PhuQuy on 2/28/19.
+ * Class support error crash app.
+ *
+ * @author binh.dt.
+ * @since 05-Jan-2017.
  */
-public class CrashAppImplement implements Thread.UncaughtExceptionHandler {
-    private static final String LOG = CrashAppImplement.class.getName();
-    private static CrashAppImplement crashHandler;
+public class CrashAppImplement implements UncaughtExceptionHandler {
+    private static final String LOG = vn.uits.ytsk.utils.CrashAppImplement.class.getName();
+    private static vn.uits.ytsk.utils.CrashAppImplement crashHandler;
 
     private Context context;
 
@@ -22,9 +26,9 @@ public class CrashAppImplement implements Thread.UncaughtExceptionHandler {
     /**
      * @return static.
      */
-    public static synchronized CrashAppImplement getInstance() {
+    public static synchronized vn.uits.ytsk.utils.CrashAppImplement getInstance() {
         if (crashHandler == null) {
-            crashHandler = new CrashAppImplement();
+            crashHandler = new vn.uits.ytsk.utils.CrashAppImplement();
         }
 
         return crashHandler;
@@ -42,7 +46,8 @@ public class CrashAppImplement implements Thread.UncaughtExceptionHandler {
      * @param ex     Error.
      */
     public void uncaughtException(Thread thread, Throwable ex) {
-        Log.e(LOG, "" + ex.getMessage());
+        Log.e(LOG, "uncaughtException" + ex.getMessage());
+        ClearDatabase.clear(context);
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 }
