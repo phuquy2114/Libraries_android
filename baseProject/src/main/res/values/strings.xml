@@ -6,4 +6,5 @@
     <string name="text_today">Hôm nay </string>
     <string name="text_yesterday">Ngày hôm qua </string>
 
+    <string name="internal_storage">Internal storage </string>
 </resources>

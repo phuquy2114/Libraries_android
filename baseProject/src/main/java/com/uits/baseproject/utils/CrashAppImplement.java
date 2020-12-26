@@ -8,12 +8,12 @@ import java.lang.Thread.UncaughtExceptionHandler;
 /**
  * Class support error crash app.
  *
- * @author binh.dt.
+ * @author PHUQUY.
  * @since 05-Jan-2017.
  */
 public class CrashAppImplement implements UncaughtExceptionHandler {
-    private static final String LOG = vn.uits.ytsk.utils.CrashAppImplement.class.getName();
-    private static vn.uits.ytsk.utils.CrashAppImplement crashHandler;
+    private static final String LOG = CrashAppImplement.class.getName();
+    private static CrashAppImplement crashHandler;
 
     private Context context;
 
@@ -26,9 +26,9 @@ public class CrashAppImplement implements UncaughtExceptionHandler {
     /**
      * @return static.
      */
-    public static synchronized vn.uits.ytsk.utils.CrashAppImplement getInstance() {
+    public static synchronized CrashAppImplement getInstance() {
         if (crashHandler == null) {
-            crashHandler = new vn.uits.ytsk.utils.CrashAppImplement();
+            crashHandler = new CrashAppImplement();
         }
 
         return crashHandler;
