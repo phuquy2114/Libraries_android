@@ -18,8 +18,6 @@ import androidx.annotation.NonNull;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import lombok.Builder;
-import lombok.Data;
 
 /**
  * Utilities for getting screen size or convert "dp" to "px".
@@ -40,67 +38,6 @@ public final class ScreenUtil {
     public static boolean isSensorRotationEnable(Context context) {
         return Settings.System.getInt(context.getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION, 0) == 1;
-    }
-
-    /**
-     * This method is used to get height of screen.
-     *
-     * @param context context
-     * @return return height screen in pixel
-     */
-    public static int getHeightScreen(@NonNull Context context) {
-        return getScreenSize(context).getHeight();
-    }
-
-    /**
-     * This method is used to get width of screen.
-     *
-     * @param context context
-     * @return return width of screen in pixel
-     */
-    public static int getWidthScreen(@NonNull Context context) {
-        return getScreenSize(context).getWidth();
-    }
-
-    public static ScreenSize getScreenSize(@NonNull Context context) {
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = windowManager.getDefaultDisplay();
-
-        // For JellyBean 4.2 (API 17) and onward
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-            display.getRealMetrics(displayMetrics);
-            return ScreenSize.builder()
-                    .width(displayMetrics.widthPixels)
-                    .height(displayMetrics.heightPixels)
-                    .build();
-        }
-
-        Method getRawH;
-        Method getRawW;
-        try {
-            getRawH = Display.class.getMethod("getRawHeight");
-            getRawW = Display.class.getMethod("getRawWidth");
-        } catch (NoSuchMethodException e) {
-            Log.e(TAG, "NoSuchMethodException error: ", e);
-            return ScreenSize.builder()
-                    .width(0)
-                    .height(0)
-                    .build();
-        }
-
-        try {
-            return ScreenSize.builder()
-                    .width((int) getRawW.invoke(display))
-                    .height((int) getRawH.invoke(display))
-                    .build();
-        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            Log.e(TAG, "error: ", e);
-            return ScreenSize.builder()
-                    .width(0)
-                    .height(0)
-                    .build();
-        }
     }
 
     /**
@@ -143,8 +80,6 @@ public final class ScreenUtil {
     /**
      * Class that manage the size of screen.
      */
-    @Data
-    @Builder
     public static class ScreenSize {
         private int width;
         private int height;
