@@ -61,8 +61,8 @@ abstract class BaseFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        if (getView() != null) {
-            getView()!!.setClickable(true);
+        if (view != null) {
+            requireView().isClickable = true;
         }
     }
 

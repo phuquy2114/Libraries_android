@@ -92,7 +92,7 @@ abstract class ApiClient {
                     val original = chain.request()
                     val requestBuilder = original.newBuilder()
                             .addHeader("Accept-Language", Locale.getDefault().language)
-                            .method(original.method(), original.body())
+                            .method(original.method, original.body)
                     val request = requestBuilder.build()
                     chain.proceed(request)
                 }

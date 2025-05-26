@@ -1,3 +1,18 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uits.baseproject">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <queries>
+        <package android:name="jp.ne.paypay.android.app" />
+        <package android:name="com.nttdocomo.keitai.payment" />
+        <package android:name="jp.auone.wallet" />
+        <package android:name="com.tencent.mm" />
+        <package android:name="com.eg.android.AlipayGphone" />
+        <package android:name="com.globe.gcash.android" />
+        <package android:name="jp.co.aeon.credit.android.wallet" />
+        <package android:name="jp.co.aeonst.app.myaeon" />
+        <package android:name="com.kouzoh.mercari" />
+        <package android:name="jp.co.rakuten.pay" />
+        <package android:name="com.unionpay" />
+        <package android:name="com.android.vending" />
+        <package android:name="jp.naver.line.android" />
+    </queries>
 </manifest>

@@ -7,4 +7,8 @@
     <color name="dark_gray">#f0f0f0</color>
     <color name="dark_gray_one">#707070</color>
     <color name="dark_gray_two">#545454</color>
+
+    <color name="dark_charcoal">#333333</color>
+    <color name="amp_transparent">#00000000</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>

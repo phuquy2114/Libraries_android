@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION", "unused")
 
-package com.uits.baseproject.utils
+package com.uits.baseproject.utils.network
 
 import android.Manifest
 import android.content.Context

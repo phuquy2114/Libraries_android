@@ -95,7 +95,7 @@ abstract class BaseDialog : Dialog {
      */
     protected fun showAlertDialog(msg: String) {
         try {
-            AlertDialog.Builder(ContextThemeWrapper(context, R.style.Theme_AppCompat_Light_Dialog_Alert))
+            AlertDialog.Builder(ContextThemeWrapper(context, R.style.MyAlertDialogTheme))
                 .setMessage(msg)
                 .setPositiveButton(android.R.string.ok, null)
                 .show()
@@ -112,7 +112,7 @@ abstract class BaseDialog : Dialog {
      */
     protected fun showAlertDialog(title: String, msg: String) {
         try {
-            AlertDialog.Builder(ContextThemeWrapper(context, R.style.Theme_AppCompat_Light_Dialog_Alert))
+            AlertDialog.Builder(ContextThemeWrapper(context, R.style.MyAlertDialogTheme))
                 .setTitle(title)
                 .setMessage(msg)
                 .setPositiveButton(android.R.string.ok, null)
@@ -130,7 +130,7 @@ abstract class BaseDialog : Dialog {
      * @param listener
      */
     protected fun showAlertDialog(msg: String, listener: DialogInterface.OnClickListener?) {
-        AlertDialog.Builder(ContextThemeWrapper(context, R.style.Theme_AppCompat_Light_Dialog_Alert))
+        AlertDialog.Builder(ContextThemeWrapper(context, R.style.MyAlertDialogTheme))
             .setMessage(msg)
             .setCancelable(false)
             .setPositiveButton(android.R.string.ok, object : DialogInterface.OnClickListener {

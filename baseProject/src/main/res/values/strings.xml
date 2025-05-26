@@ -7,4 +7,20 @@
     <string name="text_yesterday">Ngày hôm qua </string>
 
     <string name="internal_storage">Internal storage </string>
+
+    <array name="package_name">
+        <item>jp.ne.paypay.android.app</item>
+        <item>com.nttdocomo.keitai.payment</item>
+        <item>jp.auone.wallet</item>
+        <item>jp.co.rakuten.pay</item>
+        <item>com.kouzoh.mercari</item>
+        <item>jp.co.aeonst.app.myaeon</item>
+        <item>jp.co.aeon.credit.android.wallet</item>
+        <item>com.tencent.mm</item>
+        <item>com.eg.android.AlipayGphone</item>
+        <item>com.globe.gcash.android</item>
+        <item>com.unionpay</item>
+        <item>com.android.vending</item>
+        <item>jp.naver.line.android</item>
+    </array>
 </resources>
