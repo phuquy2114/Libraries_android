@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace = "com.uits.baseproject"
-    compileSdkVersion 35
-    buildToolsVersion "35.0.0"
+    compileSdkVersion 36
+    buildToolsVersion "36.0.0"
 
     defaultConfig {
         minSdkVersion 28
-        targetSdkVersion 35
+        targetSdkVersion 36
         versionCode 1
         versionName "1.0"
 
